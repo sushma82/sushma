@@ -17,38 +17,33 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Checkbox from '@mui/material/Checkbox';
 
-//When we click on single checkbox it will select the and store that single value 
-//When we will deselct the value it should remove the value from array g
-//when we click on select all all values should be stored in array
-// When we  deselect all the values from the arrat should be deleted 
 
 
 
 
 
-export default function CheckboxTable() {
+export default function CheckboxTable1() {
 
     
     const { data, isLoading, error } = useGetEmployeeQuery('')
-    
 
 
 
-    const [employee, setEmployee] = React.useState('')
+    // const [employee, setEmployee] = React.useState('')
 
     const [check, setCheck] = React.useState<any>([])
    
     
-    const selectAll = () => {
-        setCheck([])
-        data.data.map((j:any)=> {
+    // const selectAll = () => {
+    //     setCheck([])
+    //     data.data.map((j:any)=> {
            
-           console.log(j._id, "Array")
-           setCheck(j._id)
-           console.log(check, "employee")
+    //        console.log(j._id, "Array")
+    //        setCheck(j._id)
+    //        console.log(check, "employee")
  
-        })
-    }
+    //     })
+    // }
 
     const listOfEmployees = (id: string) => {
       
@@ -84,7 +79,7 @@ export default function CheckboxTable() {
                                 <TableHead>
 
                                     <TableRow>
-                                        <TableCell align="center" style={{ color: "#368DC5" }} padding="checkbox"><Checkbox onClick={() => selectAll()}  /> </TableCell>
+                                        <TableCell align="center" style={{ color: "#368DC5" }} padding="checkbox"><Checkbox/> </TableCell>
                                         <TableCell align="center" style={{ color: "#368DC5" }}>Employee Name</TableCell>
                                         <TableCell align="center" style={{ color: "#368DC5" }}>Employee Code</TableCell>
                                         <TableCell align="center" style={{ color: "#368DC5" }}>Section</TableCell>
