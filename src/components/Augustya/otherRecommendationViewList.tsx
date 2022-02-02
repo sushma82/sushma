@@ -13,6 +13,7 @@ import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { Button } from '@mui/material';
 import { Box } from '@mui/material'
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 
 
@@ -38,11 +39,16 @@ const rows = [
 interface IOtherRecommendationViewListProps {
 otherData : any
 onDelete : (id : string) => void
+onEdit : (id : string) => void
 }
 
-const OtherRecommendationViewList: React.FC<IOtherRecommendationViewListProps>  = (props:IOtherRecommendationViewListProps) => {
-   const {otherData,onDelete} = props
 
+const OtherRecommendationViewList: React.FC<IOtherRecommendationViewListProps>  = (props:IOtherRecommendationViewListProps) => {
+   const {otherData,onDelete, onEdit} = props
+
+    const [editOtherRecommendation,setEditOtherRecommendation] = useState('')
+    
+   
     return (
         <div>
 
@@ -75,7 +81,7 @@ const OtherRecommendationViewList: React.FC<IOtherRecommendationViewListProps>  
                                     <TableCell align="center">
                                         <>
                                             <IconButton aria-label="EditIcon">
-                                                <EditIcon />
+                                                <EditIcon onClick={()=>onEdit(row._id)}/>
                                             </IconButton>
                                             <IconButton aria-label="CancelOutlinedIcon " onClick={() => onDelete(row._id)}>
                                                 <CancelOutlinedIcon  />

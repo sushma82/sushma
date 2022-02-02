@@ -29,6 +29,7 @@ function App() {
       <Route path="/" element={<CreateMapping />} />
       <Route path="/createCalender" element={<CreateTable />} />
       <Route path="/otherRecommendationPage" element = {<OtherRecommendationPage/>}/>
+      <Route path="/otherRecommendationPage/:id" element = {<OtherRecommendationPage/>}/>
       <Route path= "/ratingScaleDescription" element = {<RatingScaleDescription/>}/>
       <Route path= "/rating-scale-description-ViewList" element = {<RatingScaleDescriptionViewPage/>}/>
       <Route path= "/checkboxTable" element = {<CheckboxTable/>}/>

@@ -94,6 +94,12 @@ export const pmsApi = createApi({
             })
         }),
 
+         getSingleOtherRecommendation: builder.query<any,any>({
+            query: (id) => ({
+                url: `${OTHER_RECOMMENDATION_URL}/${id}`
+            })
+        }),
+        
         createOtherRecommendation: builder.mutation<any,any>({
             query: (data) => ({
                 url: OTHER_RECOMMENDATION_URL,
@@ -108,6 +114,14 @@ export const pmsApi = createApi({
                 method : "DELETE", 
             }),
         }),
+
+        editOtherRecommendation: builder.mutation<any,any>({
+            query: (id) => ({
+                url: `${OTHER_RECOMMENDATION_URL}/${id}`,
+                method : "PATCH", 
+            }),
+        }),
+
 
         getRatings: builder.query<any,any>({
             query: () => ({
@@ -159,6 +173,8 @@ export const {
     useDeleteRatingsMutation,
     useDeleteOtherRecommendationMutation,
     useDeleteTrainingRecommendationMutation,
-    useGetRatingScaleQuery
+    useGetRatingScaleQuery,
+    useEditOtherRecommendationMutation
+
     
 } = pmsApi
