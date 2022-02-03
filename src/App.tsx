@@ -5,18 +5,21 @@ import {
   Route
 } from "react-router-dom";
 import CreateTable from './pages/mapping/createCalender';
-import OtherRecommendationPage from './pages/mapping/OtherRecommendationPage';
+import OtherRecommendationPage from './pages/OtherRecommendationPage';
 import OtherRecommendationViewList from './components/Augustya/otherRecommendationViewList';
 import TrainingRecommendation from './components/Augustya/trainingRecommendation';
 import TrainingRecommendationViewList from './components/Augustya/trainingRecommendationViewList';
 import Ratings from './components/Augustya/ratings';
 import RatingScaleDescription from './components/Augustya/ratingScaleDescription';
 import RatingScaleDescriptionViewPage from './pages/RatingScaleDescriptionViewPage'
-import CheckboxTable from './components/sushma/checkboxTable';
-import TrainingRecommendationPage from './pages/mapping/TrainingRecommendationPage';
+
+import CheckboxTable1 from './components/sushma/checkboxTable1';
+import TrainingRecommendationPage from './pages/TrainingRecommendationPage';
+
 import TrainingView from './pages/mapping/TrainingView';
 import OtherRecommendationViewPage from './pages/OtherRecommendationViewPage';
 import RatingsPage from './pages/RatingsPage';
+import OtherRecommendationEditPage from "./pages/OtherRecommendationEditPage";
 
 
 
@@ -29,7 +32,7 @@ function App() {
       <Route path="/" element={<CreateMapping />} />
       <Route path="/createCalender" element={<CreateTable />} />
       <Route path="/otherRecommendationPage" element = {<OtherRecommendationPage/>}/>
-      <Route path="/otherRecommendationPage/:id" element = {<OtherRecommendationPage/>}/>
+      <Route path="/otherRecommendationPage/:id" element = {<OtherRecommendationEditPage/>}/>
       <Route path= "/ratingScaleDescription" element = {<RatingScaleDescription/>}/>
       <Route path= "/rating-scale-description-ViewList" element = {<RatingScaleDescriptionViewPage/>}/>
       <Route path= "/checkboxTable" element = {<CheckboxTable/>}/>

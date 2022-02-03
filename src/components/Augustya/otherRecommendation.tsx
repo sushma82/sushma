@@ -9,18 +9,27 @@ import { textAlign } from '@mui/system';
 import { Grid } from '@mui/material';
 import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
+import {useEffect} from "react";
 
 
 
 interface IOtherRecommendationProps {
   onSubmit: (name:string) => void
+  defaultValue?: any
 }
 
 const OtherRecommendation:React.FC<IOtherRecommendationProps>  = (props:IOtherRecommendationProps) => {
-  const {onSubmit} = props
+  const {onSubmit,defaultValue} = props
 
   const [name,setName] = React.useState('')
 
+  useEffect(() => {
+    if(defaultValue){
+      setName(defaultValue.data.name)
+      console.log(defaultValue.data.name, 'val')
+    }
+  },[defaultValue])
+  console.log(name, 'name')
 
   return (
     <div>
