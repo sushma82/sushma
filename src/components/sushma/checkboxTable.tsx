@@ -30,7 +30,6 @@ export default function CheckboxTable() {
 
     
     const { data, isLoading, error } = useGetEmployeeQuery('')
-    
 
 
 

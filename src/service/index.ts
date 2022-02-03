@@ -126,6 +126,7 @@ export const pmsApi = createApi({
         getRatings: builder.query<any,any>({
             query: () => ({
                 url: RATINGS
+                
             })
         }),
 
