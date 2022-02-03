@@ -1,41 +1,47 @@
 import React from 'react';
-import OtherRecommendationViewList from '../components/Augustya/otherRecommendationViewList';
-import { useGetOtherRecommendationQuery } from '../service';
-import { useDeleteOtherRecommendationMutation } from '../service';
-import { useEditOtherRecommendationMutation } from '../service';
+import Ratings from '../components/Augustya/ratings';
+import { useGetRatingsQuery } from '../service';
+import { useCreateRatingsMutation } from '../service';
+import { useDeleteRatingsMutation } from '../service';
+import { useUpdateRatingMutation } from '../service';
 import { useNavigate } from "react-router-dom";
 
-const OtherRecommendationViewPage = () => {
+const RatingsPage = () => {
 
-    const { data , refetch } = useGetOtherRecommendationQuery('')
+    const { data: getQueryData, refetch } = useGetRatingsQuery('')
 
-    const [deleteOtherRecommendation, {error}] = useDeleteOtherRecommendationMutation()
+    const [deleteRating, { error }] = useDeleteRatingsMutation()
 
-    const [editOtherRecommendation] = useEditOtherRecommendationMutation()
+    const [createRatings, { isLoading, data, }] = useCreateRatingsMutation()
 
-    const deleteOtherRecommendationHandler = (id: string) => {
+
+    const createRatingHandler = (rating: string) => {
         console.log('clicked')
-        deleteOtherRecommendation(
+
+        createRatings(
+            { rating }
+        ).then(() => refetch())
+    }
+
+    const deleteRatingHandler = (id: string) => {
+        console.log('clicked')
+        deleteRating(
             id
         ).then(() => refetch())
     }
 
     let navigate = useNavigate();
-
-    const editOtherRecommendationHandler = (id: string) => {
+    const updateRatingHandler = (id:string) => {
         console.log('clicked')
-
-        editOtherRecommendation(
-            id
-        )
-        navigate(`/otherRecommendationPage/${id}`);
-
+        navigate(`/ratings-page/${id}`);
     }
 
+    console.log(data, "page")
     return (<div>
 
-        <OtherRecommendationViewList otherData={data} onDelete= {deleteOtherRecommendationHandler} onEdit = {editOtherRecommendationHandler}/>
+        <Ratings ratingsData={getQueryData} onSubmit={createRatingHandler} onDelete={deleteRatingHandler}  onUpdate={updateRatingHandler}/>
+
     </div>);
 };
 
-export default OtherRecommendationViewPage;
+export default RatingsPage;

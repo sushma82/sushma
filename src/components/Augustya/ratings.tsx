@@ -1,3 +1,4 @@
+import React,{useEffect} from 'react'
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { AvatarPropsVariantOverrides, Container, TextField } from '@mui/material';
@@ -31,18 +32,28 @@ const rows = [
     createData( 4, 3,   <>  <EditIcon />  <CancelOutlinedIcon /> </>),
 
 ];
+// interface IRatingsProps{
+//     onSubmit? : (ratings:string) => void
+//     onDelete? : (id : string) => void
+//     ratingsData? :any 
+//     onUpdate? : (id:string) => void
+//     defaultValue? : any
+// }
 
-interface IRatingsProps{
-    onSubmit : (ratings:string) => void
-    onDelete : (id : string) => void
-    ratingsData :any 
-}
-
-const Ratings: React.FC<IRatingsProps>  = (props:IRatingsProps) => {
-  const {onSubmit,ratingsData, onDelete} = props
+const Ratings = (props:any) => {
+  const {onSubmit,ratingsData, onDelete, onUpdate , defaultValue} = props
   console.log(props)
 
-  const [rating, setRating] = useState('')
+  const [rating,setRating] = React.useState('')
+
+
+  useEffect(() => {
+    if(defaultValue) {
+      setRating(defaultValue.data.rating)
+    }
+
+  },[])
+
 
     return (
                 <div>
@@ -94,7 +105,7 @@ const Ratings: React.FC<IRatingsProps>  = (props:IRatingsProps) => {
                                         <TableCell align="center">{row.rating}</TableCell>
                                         <TableCell align="center">
                                         <>
-                                            <IconButton aria-label="EditIcon">
+                                            <IconButton aria-label="EditIcon" onClick = {()=> onUpdate(row._id)}>
                                                 <EditIcon />
                                             </IconButton>
                                             <IconButton aria-label="CancelOutlinedIcon " onClick={() => onDelete(row._id)}>
