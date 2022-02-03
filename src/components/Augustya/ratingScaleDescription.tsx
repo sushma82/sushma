@@ -17,13 +17,13 @@ import { Link } from 'react-router-dom';
 
 
 
-export default function RatingScaleDescription(props:any) {
+export default function RatingScaleDescription(props: any) {
 
-    const {onSubmit} = props
+    const { onSubmit,ratings } = props
 
     const [rating, setRating] = React.useState('');
     const [ratingScale, setRatingScale] = React.useState('');
-    const [description, setDescription] = React.useState ('');
+    const [description, setDescription] = React.useState('');
 
     const handleChange = (event: SelectChangeEvent) => {
         setRating(event.target.value as string);
@@ -45,10 +45,10 @@ export default function RatingScaleDescription(props:any) {
                     <Container >
                         <Stack spacing={3} alignContent={"center"}>
                             <p style={{ backgroundColor: "light-pink" }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                            <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
-          <h2  style={{ color: "#368DC5" }}>Add Rating Scale Description</h2>
-          <Link to="/rating-scale-description-ViewList"><Button variant="outlined">View List</Button></Link>
-          </Box>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <h2 style={{ color: "#368DC5" }}>Add Rating Scale Description</h2>
+                                <Link to="/rating-scale-description-ViewList"><Button variant="outlined">View List</Button></Link>
+                            </Box>
                             <p>
                                 <FormControl fullWidth>
                                     <InputLabel id="demo-simple-select-label">Enter Rating</InputLabel>
@@ -58,19 +58,27 @@ export default function RatingScaleDescription(props:any) {
                                         value={rating}
                                         label="Enter Rating"
                                         onChange={handleChange}
-                                    >
-                                        <MenuItem value={1}>1</MenuItem>
-                                        <MenuItem value={2}>2</MenuItem>
-                                        <MenuItem value={3}>3</MenuItem>
+                                    > {
+                                        ratings && ratings.data.map((i:any) => {
+                                            return (
+                                                [
+                                                    <MenuItem value={i._id}>{i.rating}</MenuItem>
+                                                ]
+                                            )
+                                        })
+                                    }
+
+                                       
+                                      
                                     </Select>
                                 </FormControl>
                             </p>
-                            <p><TextField id="outlined-basic" label="Rating Scale" value={ratingScale} variant="outlined" style={{ width: 600, height: 100 }} onChange={(e) => setRatingScale(e.target.value)}/></p>
+                            <p><TextField id="outlined-basic" label="Rating Scale" value={ratingScale} variant="outlined" style={{ width: 600, height: 100 }} onChange={(e) => setRatingScale(e.target.value)} /></p>
                             <TextareaAutosize
                                 aria-label="empty textarea"
                                 placeholder="Definition"
                                 style={{ width: 600, height: 100 }}
-                                value = {description}
+                                value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                             />
                             <p> <Stack direction="row" spacing={3}>

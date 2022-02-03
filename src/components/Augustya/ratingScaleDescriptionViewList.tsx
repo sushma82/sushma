@@ -12,30 +12,6 @@ import { Box } from '@mui/material';
 
 
 
-function createData(
-    symbol: number,
-    rating: number,
-    ratingScale:string,
-    definition:string,
-    action: any,
-
-) {
-    return { symbol, rating, ratingScale, definition, action };
-}
-
-const rows = [
-    createData(1,1, "Not Delivering", "Employee performance does not meet the minimum expectations for this job and is not acceptable.There are many performance gaps that have been identified and require immediate action", <> <EditIcon />  <CancelOutlinedIcon /> </>),
-    createData(2,1.5, "Not Delivering", "Employee performance does not meet the minimum expectations for this job and is not acceptable.There are many performance gaps that have been identified and require immediate action", <> <EditIcon />  <CancelOutlinedIcon /> </>),
-    createData(3,2, "Not Delivering", "Employee performance does not meet the minimum expectations for this job and is not acceptable.There are many performance gaps that have been identified and require immediate action", <> <EditIcon />  <CancelOutlinedIcon /> </>),
-    createData(4,2.5, "Not Delivering", "Employee performance does not meet the minimum expectations for this job and is not acceptable.There are many performance gaps that have been identified and require immediate action", <> <EditIcon />  <CancelOutlinedIcon /> </>),
-    createData(5,3, "Not Delivering", "Employee performance does not meet the minimum expectations for this job and is not acceptable.There are many performance gaps that have been identified and require immediate action", <> <EditIcon />  <CancelOutlinedIcon /> </>),
-    createData(6,4, "Not Delivering", "Employee performance does not meet the minimum expectations for this job and is not acceptable.There are many performance gaps that have been identified and require immediate action", <> <EditIcon />  <CancelOutlinedIcon /> </>),
-    createData(7,5, "Not Delivering", "Employee performance does not meet the minimum expectations for this job and is not acceptable.There are many performance gaps that have been identified and require immediate action", <> <EditIcon />  <CancelOutlinedIcon /> </>),
-   
-];
-
-
-
 
 const RatingScaleDescriptionViewList = (props:any) => {
     const {ratingScaleData} = props
