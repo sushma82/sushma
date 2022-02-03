@@ -161,6 +161,20 @@ export const pmsApi = createApi({
             }),
         }),
 
+        updateRating: builder.mutation<any,any>({
+            query: (data) => ({
+                url: `${RATINGS}/${data.id}`,
+                method : "PATCH",
+                body : data
+            }),
+        }),
+
+        getSingleRating: builder.query<any,any>({
+            query: (id) => ({
+                url: `${RATINGS}/${id}`
+            })
+        }),
+
         getRatingScale: builder.query<any,any>({
             query: () => ({
                 url: RATING_SCALE_DESCRIPTION
@@ -194,7 +208,9 @@ export const {
     useEditOtherRecommendationMutation,
     useGetSingleOtherRecommendationQuery,
     useUpdateTrainingRecommendationMutation,
-    useGetSingleTrainingRecommendationQuery
+    useGetSingleTrainingRecommendationQuery,
+    useUpdateRatingMutation,
+    useGetSingleRatingQuery
 
     
 } = pmsApi
