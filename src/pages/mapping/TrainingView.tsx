@@ -17,6 +17,7 @@ const TrainingView = () => {
   }
 
 
+  console.log(typeof data, 'type')
   return <div>
        <TrainingRecommendationViewList
      trainingData={data} onDelete = {deleteTrainingRecommendationHandler}

@@ -116,9 +116,10 @@ export const pmsApi = createApi({
         }),
 
         editOtherRecommendation: builder.mutation<any,any>({
-            query: (id) => ({
-                url: `${OTHER_RECOMMENDATION_URL}/${id}`,
-                method : "PATCH", 
+            query: (data) => ({
+                url: `${OTHER_RECOMMENDATION_URL}/${data.id}`,
+                method : "PATCH",
+                body : data
             }),
         }),
 

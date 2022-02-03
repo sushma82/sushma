@@ -1,41 +1,50 @@
 import React from 'react';
 import OtherRecommendationViewList from '../components/Augustya/otherRecommendationViewList';
-import { useGetOtherRecommendationQuery } from '../service';
-import { useDeleteOtherRecommendationMutation } from '../service';
-import { useEditOtherRecommendationMutation } from '../service';
-import { useNavigate } from "react-router-dom";
+import {
+    useCreateOtherRecommendationMutation,
+    useGetOtherRecommendationQuery,
+    useGetSingleOtherRecommendationQuery
+} from '../service';
+import {useDeleteOtherRecommendationMutation} from '../service';
+import {useEditOtherRecommendationMutation} from '../service';
+import {useNavigate, useParams} from "react-router-dom";
+import OtherRecommendation from "../components/Augustya/otherRecommendation";
 
-const OtherRecommendationViewPage = () => {
+const OtherRecommendationEditPage = () => {
+    const navigate = useNavigate()
 
-    const { data , refetch } = useGetOtherRecommendationQuery('')
+    const {id} = useParams()
+    console.log(id)
 
-    const [deleteOtherRecommendation, {error}] = useDeleteOtherRecommendationMutation()
 
-    const [editOtherRecommendation] = useEditOtherRecommendationMutation()
+    const {refetch} = useGetOtherRecommendationQuery('')
+    // const [createOther, {isLoading, data, error}] = useCreateOtherRecommendationMutation()
+    const {data, isLoading} = useGetSingleOtherRecommendationQuery(id)
+    const [editOther, {isLoading: editLoading, data: editData, error: editError}] = useEditOtherRecommendationMutation()
 
-    const deleteOtherRecommendationHandler = (id: string) => {
-        console.log('clicked')
-        deleteOtherRecommendation(
-            id
+    const createOtherHandler = (name: string) => {
+        console.log('Clicked', name)
+
+        editOther(
+            {name, id}
         ).then(() => refetch())
+        navigate('/training/view-other-recommendation')
+    }
+    console.log(data)
+
+    if (isLoading) {
+        return <div>Loading...</div>
     }
 
-    let navigate = useNavigate();
+    return (
+        <div>
+            Edit PAge
+            <OtherRecommendation
+                onSubmit={createOtherHandler}
+                defaultValue={data}/>
+        </div>
 
-    const editOtherRecommendationHandler = (id: string) => {
-        console.log('clicked')
-
-        editOtherRecommendation(
-            id
-        )
-        navigate(`/otherRecommendationPage/${id}`);
-
-    }
-
-    return (<div>
-
-        <OtherRecommendationViewList otherData={data} onDelete= {deleteOtherRecommendationHandler} onEdit = {editOtherRecommendationHandler}/>
-    </div>);
+    );
 };
 
-export default OtherRecommendationViewPage;
+export default OtherRecommendationEditPage;
