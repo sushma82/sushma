@@ -17,11 +17,13 @@ import { Link } from 'react-router-dom';
 
 
 
-export default function RatingScaleDescription() {
+export default function RatingScaleDescription(props:any) {
+
+    const {onSubmit} = props
 
     const [rating, setRating] = React.useState('');
     const [ratingScale, setRatingScale] = React.useState('');
-
+    const [description, setDescription] = React.useState ('');
 
     const handleChange = (event: SelectChangeEvent) => {
         setRating(event.target.value as string);
@@ -45,7 +47,7 @@ export default function RatingScaleDescription() {
                             <p style={{ backgroundColor: "light-pink" }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
                             <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
           <h2  style={{ color: "#368DC5" }}>Add Rating Scale Description</h2>
-          <Link to="/ratingScaledescriptionViewList"><Button variant="outlined">View List</Button></Link>
+          <Link to="/rating-scale-description-ViewList"><Button variant="outlined">View List</Button></Link>
           </Box>
                             <p>
                                 <FormControl fullWidth>
@@ -68,9 +70,11 @@ export default function RatingScaleDescription() {
                                 aria-label="empty textarea"
                                 placeholder="Definition"
                                 style={{ width: 600, height: 100 }}
+                                value = {description}
+                                onChange={(e) => setDescription(e.target.value)}
                             />
                             <p> <Stack direction="row" spacing={3}>
-                                <p><Button variant="contained">Save</Button></p>
+                                <p><Button variant="contained" onClick={() => onSubmit(rating, ratingScale, description)}>Save</Button></p>
                                 <p><Button variant="outlined">Cancel</Button></p>
                             </Stack>
                             </p>

@@ -35,11 +35,11 @@ const rows = [
 ];
 
 
-interface IRatingScaleDescriptionViewListProps {
-ratingScaleData : any
-}
 
-const RatingScaleDescriptionViewList:React.FC<IRatingScaleDescriptionViewListProps>= (props:IRatingScaleDescriptionViewListProps) => {
+
+const RatingScaleDescriptionViewList = (props:any) => {
+    const {ratingScaleData} = props
+
     return (
         <div>
 
@@ -61,20 +61,22 @@ const RatingScaleDescriptionViewList:React.FC<IRatingScaleDescriptionViewListPro
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows.map((row) => (
-                                <TableRow
+                        {ratingScaleData && ratingScaleData.data.map((row: any) => {
+                                return (
+                                    <TableRow
                                     key={row.symbol}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell component="th" scope="row" align="center">
                                         {row.symbol}
                                     </TableCell>
-                                    <TableCell align="center">{row.rating}</TableCell>
-                                    <TableCell align="center">{row.ratingScale}</TableCell>
+                                    <TableCell align="center">{row.rating.rating}</TableCell>
+                                    <TableCell align="center">{row.rating_scale}</TableCell>
                                     <TableCell align="center">{row.definition}</TableCell>
                                     <TableCell align="center">{row.action}</TableCell>
                                 </TableRow>
-                            ))}
+                                )
+                                })}
                         </TableBody>
                     </Table>
                 </TableContainer>
