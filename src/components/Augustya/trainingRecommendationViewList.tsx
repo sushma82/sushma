@@ -33,10 +33,11 @@ const rows = [
 interface TrainingRecommendationViewListProps{
     trainingData : any
     onDelete: (id:string) => void
+    onUpdate : (id : string) => void
 }
 
 const TrainingRecommendationViewList:React.FC<TrainingRecommendationViewListProps> = (props: TrainingRecommendationViewListProps)=> {
-    const { trainingData , onDelete } = props
+    const { trainingData , onDelete , onUpdate } = props
 
 
     console.log(props)
@@ -74,7 +75,7 @@ const TrainingRecommendationViewList:React.FC<TrainingRecommendationViewListProp
                                         <TableCell align="center">{row.definition}</TableCell>
                                         <TableCell align="center">
                                         <>
-                                            <IconButton aria-label="EditIcon">
+                                            <IconButton aria-label="EditIcon" onClick={() => onUpdate(row._id)}>
                                                 <EditIcon />
                                             </IconButton>
                                             <IconButton aria-label="CancelOutlinedIcon " onClick={() => onDelete(row._id)}>

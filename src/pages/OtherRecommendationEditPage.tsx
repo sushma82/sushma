@@ -22,7 +22,7 @@ const OtherRecommendationEditPage = () => {
     const {data, isLoading} = useGetSingleOtherRecommendationQuery(id)
     const [editOther, {isLoading: editLoading, data: editData, error: editError}] = useEditOtherRecommendationMutation()
 
-    const createOtherHandler = (name: string) => {
+    const editOtherHandler = (name: string) => {
         console.log('Clicked', name)
 
         editOther(
@@ -40,7 +40,7 @@ const OtherRecommendationEditPage = () => {
         <div>
             Edit PAge
             <OtherRecommendation
-                onSubmit={createOtherHandler}
+                onSubmit={editOtherHandler}
                 defaultValue={data}/>
         </div>
 

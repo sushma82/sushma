@@ -11,7 +11,6 @@ const OtherRecommendationViewPage = () => {
 
     const [deleteOtherRecommendation, {error}] = useDeleteOtherRecommendationMutation()
 
-    const [editOtherRecommendation] = useEditOtherRecommendationMutation()
     
     const deleteOtherRecommendationHandler = (id: string) => {
         console.log('clicked')
@@ -25,9 +24,6 @@ const OtherRecommendationViewPage = () => {
     const editOtherRecommendationHandler = (id: string) => {
         console.log('clicked')
        
-        editOtherRecommendation(
-            id
-        )
         navigate(`/otherRecommendationPage/${id}`);
 
     }

@@ -16,10 +16,11 @@ import RatingScaleDescriptionViewPage from './pages/RatingScaleDescriptionViewPa
 import CheckboxTable1 from './components/sushma/checkboxTable1';
 import TrainingRecommendationPage from './pages/TrainingRecommendationPage';
 
-import TrainingView from './pages/mapping/TrainingView';
+import TrainingView from './pages/TrainingRecommendationViewPage';
 import OtherRecommendationViewPage from './pages/OtherRecommendationViewPage';
 import RatingsPage from './pages/RatingsPage';
 import OtherRecommendationEditPage from "./pages/OtherRecommendationEditPage";
+import TrainingRecommendationUpdatePage from './pages/TrainingRecommendationUpdatePage';
 
 
 
@@ -35,12 +36,12 @@ function App() {
       <Route path="/otherRecommendationPage/:id" element = {<OtherRecommendationEditPage/>}/>
       <Route path= "/ratingScaleDescription" element = {<RatingScaleDescription/>}/>
       <Route path= "/rating-scale-description-ViewList" element = {<RatingScaleDescriptionViewPage/>}/>
-      <Route path= "/checkboxTable" element = {<CheckboxTable/>}/>
+      {/* <Route path= "/checkboxTable" element = {<CheckboxTable/>}/> */}
       <Route path= "/training/training-recommendation" element = {<TrainingRecommendationPage/>}/>
       <Route path= "/training/view-training-recommendation" element = {<TrainingView/>}/>
       <Route path=  "/training/view-other-recommendation" element = {<OtherRecommendationViewPage/>}/>
       <Route path=  "/ratings" element = {<RatingsPage/>}/>
-      
+      <Route path="/training/training-recommendation/:id" element = {<TrainingRecommendationUpdatePage/>}/>
 
       </Routes>
     </BrowserRouter>

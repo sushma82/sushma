@@ -88,6 +88,21 @@ export const pmsApi = createApi({
             }),
         }),
 
+        updateTrainingRecommendation: builder.mutation<any,any>({
+            query: (data) => ({
+                url: `${TRAINING_RECOMMENDATION_URL}/${data.id}`,
+                method : "PATCH",
+                body : data
+            }),
+        }),
+
+        getSingleTrainingRecommendation: builder.query<any,any>({
+            query: (id) => ({
+                url: `${TRAINING_RECOMMENDATION_URL}/${id}`
+            })
+        }),
+
+
         getOtherRecommendation: builder.query<any,any>({
             query: () => ({
                 url: OTHER_RECOMMENDATION_URL
@@ -177,7 +192,9 @@ export const {
     useDeleteTrainingRecommendationMutation,
     useGetRatingScaleQuery,
     useEditOtherRecommendationMutation,
-    useGetSingleOtherRecommendationQuery
+    useGetSingleOtherRecommendationQuery,
+    useUpdateTrainingRecommendationMutation,
+    useGetSingleTrainingRecommendationQuery
 
     
 } = pmsApi

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React, {useEffect} from 'react';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
@@ -14,10 +14,18 @@ import { Link } from 'react-router-dom';
 
 
 export default function TrainingRecommendation(props: any) {
-  const { onSubmit } = props
+  const { onSubmit,defaultValue } = props
 
   const [title,setTitle] = React.useState('')
   const [description,setDescription] = React.useState('')
+
+  useEffect(() => {
+    if(defaultValue) {
+      setTitle(defaultValue.data.title)
+      setDescription(defaultValue.data.definition)
+    }
+
+  },[])
 
 
 
