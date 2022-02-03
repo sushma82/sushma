@@ -9,12 +9,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { Button } from '@mui/material';
 import { Box } from '@mui/material';
+import { IconButton } from '@material-ui/core';
 
 
 
 
 const RatingScaleDescriptionViewList = (props:any) => {
-    const {ratingScaleData} = props
+    const {ratingScaleData , onDelete} = props
 
     return (
         <div>
@@ -49,7 +50,16 @@ const RatingScaleDescriptionViewList = (props:any) => {
                                     <TableCell align="center">{row.rating.rating}</TableCell>
                                     <TableCell align="center">{row.rating_scale}</TableCell>
                                     <TableCell align="center">{row.definition}</TableCell>
-                                    <TableCell align="center">{row.action}</TableCell>
+                                    <TableCell align="center">
+                                    <>
+                                            <IconButton aria-label="EditIcon">
+                                                <EditIcon />
+                                            </IconButton>
+                                            <IconButton aria-label="CancelOutlinedIcon " onClick={() => onDelete(row._id)}>
+                                                <CancelOutlinedIcon  />
+                                            </IconButton>
+                                        </> 
+                                        </TableCell>
                                 </TableRow>
                                 )
                                 })}

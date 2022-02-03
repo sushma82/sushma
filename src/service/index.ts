@@ -189,6 +189,13 @@ export const pmsApi = createApi({
             }),
         }),
 
+        deleteRatingScale: builder.mutation<any,any>({
+            query: (id) => ({
+                url: `${RATING_SCALE_DESCRIPTION}/${id}`,
+                method : "DELETE" 
+            }),
+        }),
+
     }),
 })
 
@@ -219,7 +226,8 @@ export const {
     useGetSingleTrainingRecommendationQuery,
     useUpdateRatingMutation,
     useGetSingleRatingQuery,
-    useCreateRatingScaleMutation
+    useCreateRatingScaleMutation,
+    useDeleteRatingScaleMutation
 
     
 } = pmsApi
