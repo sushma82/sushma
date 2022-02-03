@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 const   TRAINING_RECOMMENDATION_URL = `api/v1/training/training-recommendation`
 const   OTHER_RECOMMENDATION_URL = `api/v1/training/other-recommendation`
 const   RATINGS = `api/v1/ratings`
-const   RATING_SCALE_DESCRIPTION = `api/v1/ratings//ratingscale-description`
+const   RATING_SCALE_DESCRIPTION = `api/v1/ratings/ratingscale-description`
 
 
 
@@ -174,7 +174,8 @@ export const {
     useDeleteOtherRecommendationMutation,
     useDeleteTrainingRecommendationMutation,
     useGetRatingScaleQuery,
-    useEditOtherRecommendationMutation
+    useEditOtherRecommendationMutation,
+    useGetSingleOtherRecommendationQuery
 
     
 } = pmsApi
