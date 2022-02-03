@@ -12,8 +12,10 @@ import TrainingRecommendationViewList from './components/Augustya/trainingRecomm
 import Ratings from './components/Augustya/ratings';
 import RatingScaleDescription from './components/Augustya/ratingScaleDescription';
 import RatingScaleDescriptionViewPage from './pages/RatingScaleDescriptionViewPage'
+
 import CheckboxTable1 from './components/sushma/checkboxTable1';
 import TrainingRecommendationPage from './pages/TrainingRecommendationPage';
+
 import TrainingView from './pages/mapping/TrainingView';
 import OtherRecommendationViewPage from './pages/OtherRecommendationViewPage';
 import RatingsPage from './pages/RatingsPage';
@@ -33,7 +35,7 @@ function App() {
       <Route path="/otherRecommendationPage/:id" element = {<OtherRecommendationEditPage/>}/>
       <Route path= "/ratingScaleDescription" element = {<RatingScaleDescription/>}/>
       <Route path= "/rating-scale-description-ViewList" element = {<RatingScaleDescriptionViewPage/>}/>
-      <Route path= "/checkboxTable1" element = {<CheckboxTable1/>}/>
+      <Route path= "/checkboxTable" element = {<CheckboxTable/>}/>
       <Route path= "/training/training-recommendation" element = {<TrainingRecommendationPage/>}/>
       <Route path= "/training/view-training-recommendation" element = {<TrainingView/>}/>
       <Route path=  "/training/view-other-recommendation" element = {<OtherRecommendationViewPage/>}/>
