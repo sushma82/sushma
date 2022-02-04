@@ -9,37 +9,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { Button } from '@mui/material';
 import { Box } from '@mui/material';
+import { IconButton } from '@material-ui/core';
 
 
 
-function createData(
-    symbol: number,
-    rating: number,
-    ratingScale:string,
-    definition:string,
-    action: any,
 
-) {
-    return { symbol, rating, ratingScale, definition, action };
-}
+const RatingScaleDescriptionViewList = (props:any) => {
+    const {ratingScaleData , onDelete, onUpdate} = props
 
-const rows = [
-    createData(1,1, "Not Delivering", "Employee performance does not meet the minimum expectations for this job and is not acceptable.There are many performance gaps that have been identified and require immediate action", <> <EditIcon />  <CancelOutlinedIcon /> </>),
-    createData(2,1.5, "Not Delivering", "Employee performance does not meet the minimum expectations for this job and is not acceptable.There are many performance gaps that have been identified and require immediate action", <> <EditIcon />  <CancelOutlinedIcon /> </>),
-    createData(3,2, "Not Delivering", "Employee performance does not meet the minimum expectations for this job and is not acceptable.There are many performance gaps that have been identified and require immediate action", <> <EditIcon />  <CancelOutlinedIcon /> </>),
-    createData(4,2.5, "Not Delivering", "Employee performance does not meet the minimum expectations for this job and is not acceptable.There are many performance gaps that have been identified and require immediate action", <> <EditIcon />  <CancelOutlinedIcon /> </>),
-    createData(5,3, "Not Delivering", "Employee performance does not meet the minimum expectations for this job and is not acceptable.There are many performance gaps that have been identified and require immediate action", <> <EditIcon />  <CancelOutlinedIcon /> </>),
-    createData(6,4, "Not Delivering", "Employee performance does not meet the minimum expectations for this job and is not acceptable.There are many performance gaps that have been identified and require immediate action", <> <EditIcon />  <CancelOutlinedIcon /> </>),
-    createData(7,5, "Not Delivering", "Employee performance does not meet the minimum expectations for this job and is not acceptable.There are many performance gaps that have been identified and require immediate action", <> <EditIcon />  <CancelOutlinedIcon /> </>),
-   
-];
-
-
-interface IRatingScaleDescriptionViewListProps {
-ratingScaleData : any
-}
-
-const RatingScaleDescriptionViewList:React.FC<IRatingScaleDescriptionViewListProps>= (props:IRatingScaleDescriptionViewListProps) => {
     return (
         <div>
 
@@ -61,20 +38,31 @@ const RatingScaleDescriptionViewList:React.FC<IRatingScaleDescriptionViewListPro
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows.map((row) => (
-                                <TableRow
+                        {ratingScaleData && ratingScaleData.data.map((row: any) => {
+                                return (
+                                    <TableRow
                                     key={row.symbol}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell component="th" scope="row" align="center">
                                         {row.symbol}
                                     </TableCell>
-                                    <TableCell align="center">{row.rating}</TableCell>
-                                    <TableCell align="center">{row.ratingScale}</TableCell>
+                                    <TableCell align="center">{row.rating.rating}</TableCell>
+                                    <TableCell align="center">{row.rating_scale}</TableCell>
                                     <TableCell align="center">{row.definition}</TableCell>
-                                    <TableCell align="center">{row.action}</TableCell>
+                                    <TableCell align="center">
+                                    <>
+                                            <IconButton aria-label="EditIcon" onClick={() => onUpdate(row._id)}>
+                                                <EditIcon />
+                                            </IconButton>
+                                            <IconButton aria-label="CancelOutlinedIcon " onClick={() => onDelete(row._id)}>
+                                                <CancelOutlinedIcon  />
+                                            </IconButton>
+                                        </> 
+                                        </TableCell>
                                 </TableRow>
-                            ))}
+                                )
+                                })}
                         </TableBody>
                     </Table>
                 </TableContainer>

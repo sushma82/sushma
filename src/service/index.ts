@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 const   TRAINING_RECOMMENDATION_URL = `api/v1/training/training-recommendation`
 const   OTHER_RECOMMENDATION_URL = `api/v1/training/other-recommendation`
 const   RATINGS = `api/v1/ratings`
-const   RATING_SCALE_DESCRIPTION = `api/v1/ratings/ratingscale-description`
+const   RATING_SCALE_DESCRIPTION = `api/v1/ratingscale`
 
 
 
@@ -178,7 +178,36 @@ export const pmsApi = createApi({
         getRatingScale: builder.query<any,any>({
             query: () => ({
                 url: RATING_SCALE_DESCRIPTION
+            }),
+        }),
+
+        createRatingScale: builder.mutation<any,any>({
+            query: (data) => ({
+                url: RATING_SCALE_DESCRIPTION,
+                method : "POST", 
+                body : data
+            }),
+        }),
+
+        deleteRatingScale: builder.mutation<any,any>({
+            query: (id) => ({
+                url: `${RATING_SCALE_DESCRIPTION}/${id}`,
+                method : "DELETE" 
+            }),
+        }),
+
+        getSingleRatingScale: builder.query<any,any>({
+            query: (id) => ({
+                url: `${RATING_SCALE_DESCRIPTION}/${id}`
             })
+        }),
+
+        updateRatingScale: builder.mutation<any,any>({
+            query: (data) => ({
+                url: `${RATING_SCALE_DESCRIPTION}/${data.id}`,
+                method : "PATCH",
+                body : data
+            }),
         }),
 
     }),
@@ -210,7 +239,11 @@ export const {
     useUpdateTrainingRecommendationMutation,
     useGetSingleTrainingRecommendationQuery,
     useUpdateRatingMutation,
-    useGetSingleRatingQuery
+    useGetSingleRatingQuery,
+    useCreateRatingScaleMutation,
+    useDeleteRatingScaleMutation,
+    useGetSingleRatingScaleQuery,
+    useUpdateRatingScaleMutation
 
     
 } = pmsApi

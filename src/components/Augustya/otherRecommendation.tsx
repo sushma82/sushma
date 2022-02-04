@@ -23,12 +23,14 @@ const OtherRecommendation:React.FC<IOtherRecommendationProps>  = (props:IOtherRe
 
   const [name,setName] = React.useState('')
 
+
+
   useEffect(() => {
     if(defaultValue){
       setName(defaultValue.data.name)
       console.log(defaultValue.data.name, 'val')
     }
-  },[defaultValue])
+  },[defaultValue,name])
   console.log(name, 'name')
 
   return (
