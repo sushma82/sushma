@@ -21,6 +21,7 @@ import OtherRecommendationEditPage from "./pages/OtherRecommendationEditPage";
 import TrainingRecommendationUpdatePage from './pages/TrainingRecommendationUpdatePage';
 import RatingScaleDescriptionViewPage from './pages/RatingScaleDescriptionViewPage';
 import RatingScaleDescriptionPage from './pages/RatingScaleDescriptionPage';
+import RatingScaleDescriptionUpdate from './pages/RatingScaleDescriptionUpdate';
 
 
 
@@ -43,6 +44,7 @@ function App() {
       <Route path=  "/ratings-page/:id" element = {<RatingsUpdatePage/>}/>
       <Route path= "/ratings-page" element = {<RatingsPage/>}/>
       <Route path="/training/training-recommendation/:id" element = {<TrainingRecommendationUpdatePage/>}/>
+      <Route path="/ratingScale-Description-page/:id" element = {<RatingScaleDescriptionUpdate/>}/>
 
       </Routes>
     </BrowserRouter>

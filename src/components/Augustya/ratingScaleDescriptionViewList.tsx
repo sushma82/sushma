@@ -15,7 +15,7 @@ import { IconButton } from '@material-ui/core';
 
 
 const RatingScaleDescriptionViewList = (props:any) => {
-    const {ratingScaleData , onDelete} = props
+    const {ratingScaleData , onDelete, onUpdate} = props
 
     return (
         <div>
@@ -52,7 +52,7 @@ const RatingScaleDescriptionViewList = (props:any) => {
                                     <TableCell align="center">{row.definition}</TableCell>
                                     <TableCell align="center">
                                     <>
-                                            <IconButton aria-label="EditIcon">
+                                            <IconButton aria-label="EditIcon" onClick={() => onUpdate(row._id)}>
                                                 <EditIcon />
                                             </IconButton>
                                             <IconButton aria-label="CancelOutlinedIcon " onClick={() => onDelete(row._id)}>

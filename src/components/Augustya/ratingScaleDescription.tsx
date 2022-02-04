@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
@@ -19,16 +20,35 @@ import { Link } from 'react-router-dom';
 
 export default function RatingScaleDescription(props: any) {
 
-    const { onSubmit,ratings } = props
+    const { onSubmit, ratings, defaultValue } = props
 
     const [rating, setRating] = React.useState('');
     const [ratingScale, setRatingScale] = React.useState('');
     const [description, setDescription] = React.useState('');
 
+    const [edit,setEdit]= React.useState(true)
+
     const handleChange = (event: SelectChangeEvent) => {
         setRating(event.target.value as string);
 
     };
+
+    
+
+    useEffect(() => {
+        if (defaultValue) {
+            if (defaultValue.data._id) {
+                // setRating(defaultValue.data.rating._id)
+
+            }
+            setRatingScale('61fbca11b14b344976c5815a')
+
+            setRatingScale(defaultValue.data.rating_scale)
+            setDescription(defaultValue.data.definition)
+            console.log(defaultValue.data._id, 'ratings')
+        }
+
+    }, [])
 
     return (
         <div>
@@ -59,17 +79,17 @@ export default function RatingScaleDescription(props: any) {
                                         label="Enter Rating"
                                         onChange={handleChange}
                                     > {
-                                        ratings && ratings.data.map((i:any) => {
-                                            return (
-                                                [
-                                                    <MenuItem value={i._id}>{i.rating}</MenuItem>
-                                                ]
-                                            )
-                                        })
-                                    }
+                                            ratings && ratings.data.map((i: any) => {
+                                                return (
+                                                    [
+                                                        <MenuItem value={i._id}>{i.rating}</MenuItem>
+                                                    ]
+                                                )
+                                            })
+                                        }
 
-                                       
-                                      
+
+
                                     </Select>
                                 </FormControl>
                             </p>
